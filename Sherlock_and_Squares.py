@@ -1,37 +1,15 @@
-#!/bin/python3
-
-import math
-import os
-import random
-import re
 import sys
+from math import ceil, floor
 
-# Complete the squares function below.
 def squares(a, b):
-    count = 0
-    for i in range(a,b+1):
-        if(issquare(i)):
-            count+=1
-    return count
+    res = 0
+    res = floor(b**0.5)+1 - ceil(a**0.5)
+    return res
 
-def issquare(x):
-    sr = math.sqrt(x) 
-    return ((sr - math.floor(sr)) == 0)     
-
-if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
-    q = int(input())
-
-    for q_itr in range(q):
-        ab = input().split()
-
-        a = int(ab[0])
-
-        b = int(ab[1])
-
+if __name__ == "__main__":
+    q = int(input().strip())
+    for a in range(q):
+        a, b = input().strip().split(' ')
+        a, b = [int(a), int(b)]
         result = squares(a, b)
-
-        fptr.write(str(result) + '\n')
-
-    fptr.close()
+        print(result)
